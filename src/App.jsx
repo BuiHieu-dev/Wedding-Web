@@ -18,7 +18,7 @@ function App() {
       <WeddingInfo />
       <WeddingCalendar />
       <Gallery />
-      <RsvpSection />
+      {/* <RsvpSection /> */}
       {/* <GiftSection /> */}
       <AudioPlayer />
     </main>

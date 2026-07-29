@@ -19,6 +19,8 @@ function Gallery() {
               <img
                 src={image}
                 alt={`Ảnh cưới ${index + 1}`}
+                loading="eager"
+                decoding="sync"
                 className="aspect-square w-full object-cover transition duration-700 hover:scale-105"
               />
             </Reveal>

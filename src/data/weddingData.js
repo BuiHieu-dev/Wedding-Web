@@ -63,10 +63,10 @@ export const reception = {
 }
 
 export const galleryImages = [
-  `${IMG_PATH}/gallery (3).jpg`,
-  `${IMG_PATH}/gallery mid (2).jpg`,
-  `${IMG_PATH}/gallery (7).jpg`,
-  `${IMG_PATH}/gallery (8).jpg`,
+  `${IMG_PATH}/gallery (3).webp`,
+  `${IMG_PATH}/gallery mid (2).webp`,
+  `${IMG_PATH}/gallery (7).webp`,
+  `${IMG_PATH}/gallery (8).webp`,
 ]
 
 export const giftAccounts = [
