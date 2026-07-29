@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:5174/)",
+      "Bash(taskkill //F //FI \"WINDOWTITLE eq *vite*\")",
+      "Bash(pkill -f \"vite\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5175/)",
+      "WebFetch(domain:chungdoi.com)",
+      "WebFetch(domain:unsplash.com)",
+      "WebSearch",
+      "WebFetch(domain:www.svgrepo.com)",
+      "WebFetch(domain:www.vecteezy.com)",
+      "WebFetch(domain:pixabay.com)",
+      "WebFetch(domain:www.cleanpng.com)",
+      "Bash(mkdir -p \"c:/Work/Web/Wedding/public/img\" && cp \"c:/Work/Web/Wedding/img/\"* \"c:/Work/Web/Wedding/public/img/\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Work\\Web\\Wedding\\img"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
+  }
+}

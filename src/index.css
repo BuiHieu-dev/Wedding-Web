@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #fffaf2;
+  --color-blush: #f8dfe6;
+  --color-champagne: #f4e4c1;
+  --color-gold: #b68b45;
+  --color-charcoal: #2f2f35;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-handwriting: 'Great Vibes', cursive;
+  --shadow-romantic: 0 24px 70px rgba(93, 64, 55, 0.12);
+}
+
+:root {
+  font-family: 'Montserrat', sans-serif;
+  color: #2f2f35;
+  background: #fffaf2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #fffaf2;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"),
+    radial-gradient(circle at top left, rgba(248, 223, 230, 0.65), transparent 32rem),
+    linear-gradient(180deg, #fffaf2 0%, #ffffff 42%, #fff7f4 100%);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: #f8dfe6;
+  color: #2f2f35;
+}
+
+/* Section decorative border */
+.section-frame {
+  position: relative;
+  margin: 24px 16px;
+  border: 2px solid rgba(182, 139, 69, 0.28);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(6px);
+  overflow: visible;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.section-frame::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(182, 139, 69, 0.16);
+  border-radius: 1.1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-frame::after {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border: 1px dashed rgba(182, 139, 69, 0.10);
+  border-radius: 0.85rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Alternating section backgrounds */
+.section-odd {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.section-even {
+  background-color: rgba(248, 223, 230, 0.12);
+}
+
+/* Floral corner decorations */
+.floral-corner {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.2;
+  width: 480px;
+  height: 480px;
+}
+
+.floral-corner--tl { top: -2px; left: -2px; }
+.floral-corner--br { bottom: -2px; right: -2px; }
+
+@media (min-width: 768px) {
+  .section-frame {
+    margin: 32px 32px;
+  }
+  .floral-corner { width: 520px; height: 520px; }
+}
+
+@media (min-width: 1024px) {
+  .floral-corner { width: 600px; height: 600px; }
+}
+
+@media (max-width: 640px) {
+  .section-frame {
+    margin: 16px 10px;
+    border-radius: 1rem;
+  }
+  .section-frame::before { inset: 4px; border-radius: 0.8rem; }
+  .section-frame::after { inset: 8px; border-radius: 0.6rem; }
+  .floral-corner { width: 400px; height: 400px; opacity: 0.2; }
+}

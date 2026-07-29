@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test *)",
+      "Bash(python -)",
+      "Bash(PYTHONIOENCODING=utf-8 python -)",
+      "Bash(npm run *)",
+      "Bash(curl -I http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(curl -I http://localhost:5175/)",
+      "Bash(curl -s http://localhost:5175/src/index.css)",
+      "Bash(curl -I http://localhost:5176/)",
+      "Bash(curl -I http://localhost:5177/)"
+    ]
+  }
+}
