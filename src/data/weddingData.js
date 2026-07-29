@@ -1,4 +1,5 @@
 const IMG_PATH = `${import.meta.env.BASE_URL}img`
+const AUDIO_PATH = `${import.meta.env.BASE_URL}audio`
 
 export const weddingInfo = {
   couple: 'Ngọc Huân & Thu Hiền',
@@ -6,7 +7,7 @@ export const weddingInfo = {
   dateTarget: '2026-08-08T09:00:00',
   heroImage:
     `${IMG_PATH}/_DSC2251.jpg`,
-  audioSrc: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+  audioSrc: `${AUDIO_PATH}/beautiful_in_white.mp3`,
 }
 
 export const families = [
