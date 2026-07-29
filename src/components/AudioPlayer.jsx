@@ -1,10 +1,20 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Music, Pause } from 'lucide-react'
 import { weddingInfo } from '../data/weddingData'
 
 function AudioPlayer() {
   const audioRef = useRef(null)
   const [playing, setPlaying] = useState(false)
+
+  // Tự phát nhạc nền khi mới vào trang
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    audio.play()
+      .then(() => setPlaying(true))
+      .catch(() => setPlaying(false))
+  }, [])
 
   async function toggleAudio() {
     const audio = audioRef.current
@@ -26,7 +36,7 @@ function AudioPlayer() {
 
   return (
     <div className="fixed bottom-5 right-5 z-50">
-      <audio ref={audioRef} src={weddingInfo.audioSrc} loop preload="none" />
+      <audio ref={audioRef} src={weddingInfo.audioSrc} loop preload="auto" />
       <button
         type="button"
         aria-label={playing ? 'Tạm dừng nhạc nền' : 'Phát nhạc nền'}
