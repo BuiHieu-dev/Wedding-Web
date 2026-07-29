@@ -2,16 +2,17 @@ import { useEffect, useRef } from 'react'
 
 /**
  * Tự động cuộn mượt từ đầu trang xuống cuối.
- * Nếu người dùng cuộn thủ công (wheel / touch / scroll) → dừng vĩnh viễn.
+ * Nhận prop `started` — chỉ bắt đầu cuộn khi true (sau khi user bấm "Mở Thiệp").
+ * Nếu người dùng cuộn thủ công → dừng vĩnh viễn.
  */
-export default function useAutoScroll({ speed = 1.2, delay = 2000 } = {}) {
+export default function useAutoScroll({ speed = 1.2, delay = 1500, started = false } = {}) {
   const stopped = useRef(false)
   const raf = useRef(null)
 
   useEffect(() => {
+    if (!started) return
     let last = null
 
-    // Dừng vĩnh viễn khi người dùng tương tác
     function stop() {
       stopped.current = true
       if (raf.current) cancelAnimationFrame(raf.current)
@@ -21,7 +22,6 @@ export default function useAutoScroll({ speed = 1.2, delay = 2000 } = {}) {
       window.removeEventListener('keydown', onKeyDown)
     }
 
-    // Chỉ dừng nếu người dùng thật sự cuộn (scrollY thay đổi)
     function onRealScroll() {
       if (!last || Math.abs(window.scrollY - last) > 10) stop()
     }
@@ -30,7 +30,6 @@ export default function useAutoScroll({ speed = 1.2, delay = 2000 } = {}) {
       if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space', 'End', 'Home'].includes(e.key)) stop()
     }
 
-    // Vòng lặp cuộn mượt
     function tick(timestamp) {
       if (stopped.current) return
       if (!last) last = timestamp
@@ -44,7 +43,6 @@ export default function useAutoScroll({ speed = 1.2, delay = 2000 } = {}) {
       }
     }
 
-    // Bắt đầu sau delay
     const timer = setTimeout(() => {
       window.addEventListener('wheel', stop, { passive: true })
       window.addEventListener('touchmove', stop, { passive: true })
@@ -58,5 +56,5 @@ export default function useAutoScroll({ speed = 1.2, delay = 2000 } = {}) {
       clearTimeout(timer)
       stop()
     }
-  }, [speed, delay])
+  }, [speed, delay, started])
 }

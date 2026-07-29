@@ -6,7 +6,7 @@ export const weddingInfo = {
   dateDisplay: '08 . 08 . 2026',
   dateTarget: '2026-08-08T09:00:00',
   heroImage:
-    `${IMG_PATH}/_DSC2251.jpg`,
+    `${IMG_PATH}/cover.jpg`,
   audioSrc: `${AUDIO_PATH}/beautiful_in_white.mp3`,
 }
 

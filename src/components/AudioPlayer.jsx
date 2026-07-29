@@ -2,19 +2,20 @@ import { useEffect, useRef, useState } from 'react'
 import { Music, Pause } from 'lucide-react'
 import { weddingInfo } from '../data/weddingData'
 
-function AudioPlayer() {
+function AudioPlayer({ playSignal = false }) {
   const audioRef = useRef(null)
   const [playing, setPlaying] = useState(false)
 
-  // Tự phát nhạc nền khi mới vào trang
+  // Tự phát nhạc khi nhận tín hiệu từ WelcomeOverlay
   useEffect(() => {
+    if (!playSignal) return
     const audio = audioRef.current
     if (!audio) return
 
     audio.play()
       .then(() => setPlaying(true))
       .catch(() => setPlaying(false))
-  }, [])
+  }, [playSignal])
 
   async function toggleAudio() {
     const audio = audioRef.current
