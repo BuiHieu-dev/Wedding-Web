@@ -7,6 +7,8 @@ export const weddingInfo = {
   dateTarget: '2026-08-08T09:00:00',
   heroImage:
     `${IMG_PATH}/cover.jpg`,
+  thankYouImage:
+    `${IMG_PATH}/thankyou.webp`,
   audioSrc: `${AUDIO_PATH}/beautiful_in_white.mp3`,
 }
 
@@ -27,16 +29,16 @@ export const families = [
 
 export const groomBride = [
   {
-    role: 'Trưởng Nam',
+    role: 'Chú rể',
     name: 'Ngọc Huân',
     image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85',
+      `${IMG_PATH}/chure.webp`,
   },
   {
-    role: 'Út Nữ',
+    role: 'Cô dâu',
     name: 'Thu Hiền',
     image:
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=85',
+      `${IMG_PATH}/codau.webp`,
   },
 ]
 

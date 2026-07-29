@@ -1,31 +1,80 @@
-import SectionTitle from './SectionTitle'
 import Reveal from './Reveal'
-import StaggerGroup from './StaggerGroup'
-import { coupleProfiles } from '../data/weddingData'
+import SectionFrame from './SectionFrame'
+import SectionTitle from './SectionTitle'
+import { groomBride } from '../data/weddingData'
 
 function CoupleSection() {
+  const groom = groomBride[0]
+  const bride = groomBride[1]
+
   return (
-    <section className="px-5 py-16 md:px-8 md:py-24">
-      <div className="mx-auto max-w-6xl">
+    <SectionFrame variant="odd" className="px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-4xl text-center">
         <SectionTitle
-          eyebrow="Cô dâu & Chú rể"
-          title="Chuyện tình của chúng mình"
-          subtitle="Hai trái tim, một hành trình, và một ngày thật đẹp để cùng nhau bắt đầu chương mới."
+          eyebrow="Cặp đôi"
+          title="Chú Rể & Cô Dâu"
+          subtitle="Hai mảnh ghép hoàn hảo, đến bên nhau bằng tình yêu chân thành."
         />
-        <StaggerGroup className="grid gap-8 md:grid-cols-2" stagger={0.14}>
-          {coupleProfiles.map((person) => (
-            <Reveal key={person.role} distance={34} scale={0.96} className="rounded-[2rem] border border-white bg-white/80 p-6 text-center shadow-romantic backdrop-blur md:p-8">
-              <div className="mx-auto h-56 w-44 overflow-hidden rounded-full border-8 border-ivory shadow-lg md:h-72 md:w-56">
-                <img src={person.image} alt={person.name} className="h-full w-full object-cover" />
+
+        {/* 2 ảnh nghiên chéo */}
+        <div className="relative mx-auto mt-12 flex items-center justify-center gap-6 sm:gap-10">
+          {/* Ảnh chú rể — lệch lên trên */}
+          <Reveal direction="left" distance={40} className="w-[45%]">
+            <div className="relative -rotate-3 rounded-2xl shadow-romantic ring-4 ring-white/80">
+              <img
+                src={groom.image}
+                alt={groom.name}
+                className="aspect-[3/4] w-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 pt-10">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne sm:text-xs">
+                  {groom.role}
+                </p>
+                <p className="font-serif text-lg font-bold text-white sm:text-2xl">
+                  {groom.name}
+                </p>
               </div>
-              <p className="mt-7 text-xs font-semibold uppercase tracking-[0.35em] text-gold">{person.role}</p>
-              <h3 className="mt-3 font-serif text-4xl font-bold text-charcoal">{person.name}</h3>
-              <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-charcoal/70">“{person.quote}”</p>
-            </Reveal>
-          ))}
-        </StaggerGroup>
+            </div>
+          </Reveal>
+
+          {/* Heart ở giữa */}
+          <Reveal delay={0.2} className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gold/90 text-white shadow-lg sm:h-16 sm:w-16">
+              <span className="font-serif text-2xl sm:text-3xl">&amp;</span>
+            </div>
+          </Reveal>
+
+          {/* Ảnh cô dâu — lệch xuống dưới */}
+          <Reveal direction="right" distance={40} className="w-[45%]">
+            <div className="relative rotate-3 rounded-2xl shadow-romantic ring-4 ring-white/80">
+              <img
+                src={bride.image}
+                alt={bride.name}
+                className="aspect-[3/4] w-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 pt-10">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-champagne sm:text-xs">
+                  {bride.role}
+                </p>
+                <p className="font-serif text-lg font-bold text-white sm:text-2xl">
+                  {bride.name}
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Quote */}
+        <Reveal delay={0.3} className="mx-auto mt-14 max-w-xl">
+          <div className="mx-auto mb-4 h-px w-12 bg-gold/40" />
+          <p className="font-serif text-base italic leading-relaxed text-charcoal/70 sm:text-lg">
+            &ldquo;Tình yêu không phải là nhìn nhau, mà là cùng nhìn về một hướng.&rdquo;
+          </p>
+          <p className="mt-3 text-xs tracking-wider text-charcoal/40">&mdash; Antoine de Saint-Exupéry</p>
+          <div className="mx-auto mt-4 h-px w-12 bg-gold/40" />
+        </Reveal>
       </div>
-    </section>
+    </SectionFrame>
   )
 }
 

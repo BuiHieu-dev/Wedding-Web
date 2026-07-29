@@ -10,6 +10,8 @@ import ReceptionSection from './components/ReceptionSection'
 import RsvpSection from './components/RsvpSection'
 import WeddingCalendar from './components/WeddingCalendar'
 import WeddingInfo from './components/WeddingInfo'
+import CoupleSection from './components/CoupleSection'
+import ThankYouSection from './components/ThankYouSection'
 
 function App() {
   const [entered, setEntered] = useState(false)
@@ -29,9 +31,13 @@ function App() {
 
       <WeddingInfo />
       <ReceptionSection />
-      <WeddingCalendar />
+      
+      <CoupleSection />
       <Gallery />
-      {/* <RsvpSection /> */}
+      
+      <WeddingCalendar />
+      <RsvpSection />
+      <ThankYouSection />
       {/* <GiftSection /> */}
       <AudioPlayer playSignal={entered} />
     </main>
