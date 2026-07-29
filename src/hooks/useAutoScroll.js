@@ -8,47 +8,46 @@ import { useEffect, useRef } from 'react'
 export default function useAutoScroll({ speed = 1.2, delay = 1500, started = false } = {}) {
   const stopped = useRef(false)
   const raf = useRef(null)
+  const startedRef = useRef(false) // chống chạy nhiều lần
 
   useEffect(() => {
-    if (!started) return
-    let last = null
+    if (!started || startedRef.current) return
+    startedRef.current = true
+
+    let lastTimestamp = null
 
     function stop() {
+      if (stopped.current) return // chỉ chạy 1 lần
       stopped.current = true
       if (raf.current) cancelAnimationFrame(raf.current)
-      window.removeEventListener('wheel', stop)
-      window.removeEventListener('touchmove', stop)
-      window.removeEventListener('scroll', onRealScroll)
+      window.removeEventListener('wheel', onUserInput)
+      window.removeEventListener('touchmove', onUserInput)
       window.removeEventListener('keydown', onKeyDown)
     }
 
-    function onRealScroll() {
-      if (!last || Math.abs(window.scrollY - last) > 10) stop()
-    }
-
+    function onUserInput() { stop() }
     function onKeyDown(e) {
       if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space', 'End', 'Home'].includes(e.key)) stop()
     }
 
     function tick(timestamp) {
       if (stopped.current) return
-      if (!last) last = timestamp
-      const delta = timestamp - last
-      last = timestamp
+      if (lastTimestamp === null) lastTimestamp = timestamp
+      const delta = timestamp - lastTimestamp
+      lastTimestamp = timestamp
 
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight
       if (window.scrollY < maxScroll - 1) {
-        window.scrollBy({ top: speed * (delta / 16), behavior: 'auto' })
+        window.scrollTo({ top: window.scrollY + speed * (delta / 16), behavior: 'instant' })
         raf.current = requestAnimationFrame(tick)
       }
     }
 
     const timer = setTimeout(() => {
-      window.addEventListener('wheel', stop, { passive: true })
-      window.addEventListener('touchmove', stop, { passive: true })
-      window.addEventListener('scroll', onRealScroll, { passive: true })
+      window.addEventListener('wheel', onUserInput, { passive: true })
+      window.addEventListener('touchmove', onUserInput, { passive: true })
       window.addEventListener('keydown', onKeyDown)
-      last = null
+      lastTimestamp = null
       raf.current = requestAnimationFrame(tick)
     }, delay)
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AudioPlayer from './components/AudioPlayer'
 import WelcomeOverlay from './components/WelcomeOverlay'
 import useAutoScroll from './hooks/useAutoScroll'
@@ -13,6 +13,12 @@ import WeddingInfo from './components/WeddingInfo'
 
 function App() {
   const [entered, setEntered] = useState(false)
+
+  // F5 thì luôn quay về đầu trang
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   useAutoScroll({ speed: 1.2, delay: 1500, started: entered })
 
   return (
