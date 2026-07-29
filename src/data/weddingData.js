@@ -1,9 +1,11 @@
+const IMG_PATH = `${import.meta.env.BASE_URL}img`
+
 export const weddingInfo = {
   couple: 'Ngọc Huân & Thu Hiền',
   dateDisplay: '08 . 08 . 2026',
   dateTarget: '2026-08-08T09:00:00',
   heroImage:
-    '/img/_DSC2251.jpg',
+    `${IMG_PATH}/_DSC2251.jpg`,
   audioSrc: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
 }
 
@@ -60,10 +62,10 @@ export const reception = {
 }
 
 export const galleryImages = [
-  '/img/gallery (3).jpg',
-  '/img/gallery mid (2).jpg',
-  '/img/gallery (7).jpg',
-  '/img/gallery (8).jpg',
+  `${IMG_PATH}/gallery (3).jpg`,
+  `${IMG_PATH}/gallery mid (2).jpg`,
+  `${IMG_PATH}/gallery (7).jpg`,
+  `${IMG_PATH}/gallery (8).jpg`,
 ]
 
 export const giftAccounts = [
