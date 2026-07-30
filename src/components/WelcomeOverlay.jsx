@@ -37,7 +37,7 @@ export default function WelcomeOverlay({ visible, onEnter }) {
             initial={{ opacity: 1 }}
             animate={{ opacity: opening ? 0 : 1 }}
             transition={{ duration: 0.8, delay: opening ? 0.6 : 0 }}
-            className="absolute inset-0 bg-[#f3e8e6]"
+            className="absolute inset-0 bg-[#d4b3ab]"
           />
 
           {/* Nửa thiệp trái — xé sang trái */}
@@ -47,7 +47,7 @@ export default function WelcomeOverlay({ visible, onEnter }) {
             transition={{ duration: 0.9, ease: [0.7, 0, 0.3, 1] }}
             className="absolute inset-y-0 left-0 z-20 w-1/2 overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#e6d5d0] via-[#f0e2de] to-[#ede0dc]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#c49e93] via-[#d4b3ab] to-[#c9a59b]" />
             <div className="absolute inset-0 bg-white/40" />
             {/* Viền vàng phải */}
             <div className="absolute top-0 bottom-0 right-0 w-px bg-champagne/50" />
@@ -60,7 +60,7 @@ export default function WelcomeOverlay({ visible, onEnter }) {
             transition={{ duration: 0.9, ease: [0.7, 0, 0.3, 1] }}
             className="absolute inset-y-0 right-0 z-20 w-1/2 overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-l from-[#e6d5d0] via-[#f0e2de] to-[#ede0dc]" />
+            <div className="absolute inset-0 bg-gradient-to-l from-[#c49e93] via-[#d4b3ab] to-[#c9a59b]" />
             <div className="absolute inset-0 bg-white/40" />
             {/* Viền vàng trái */}
             <div className="absolute top-0 bottom-0 left-0 w-px bg-champagne/50" />
