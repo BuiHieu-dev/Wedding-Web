@@ -17,6 +17,22 @@ function AudioPlayer({ playSignal = false }) {
       .catch(() => setPlaying(false))
   }, [playSignal])
 
+  // Tạm dừng khi tab chạy nền, tiếp tục khi quay lại
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    function handleVisibility() {
+      if (document.hidden) {
+        audio.pause()
+        setPlaying(false)
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => document.removeEventListener('visibilitychange', handleVisibility)
+  }, [])
+
   async function toggleAudio() {
     const audio = audioRef.current
     if (!audio) return
